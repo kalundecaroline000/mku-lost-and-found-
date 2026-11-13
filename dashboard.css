@@ -1,0 +1,142 @@
+/* Dashboard Layout Grid */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--mku-light-bg);
+}
+
+
+/* Sidebar Styling */
+
+.sidebar {
+    width: 260px;
+    background-color: var(--mku-navy);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 4px solid var(--mku-gold);
+}
+
+.sidebar-brand {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+    height: 45px;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-brand h3 {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.role-tag {
+    display: inline-block;
+    background-color: var(--mku-gold);
+    color: var(--mku-navy);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.3rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0;
+    flex: 1;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    color: #cfd8dc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--mku-gold);
+    border-left: 4px solid var(--mku-gold);
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-logout {
+    display: block;
+    text-align: center;
+    background-color: #d93025;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-logout:hover {
+    background-color: #b52219;
+}
+
+
+/* Main Content Area */
+
+.dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.dash-header {
+    margin-bottom: 2rem;
+}
+
+.dash-header h2 {
+    color: var(--mku-navy);
+    font-size: 1.8rem;
+}
+
+.dash-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+
+/* Summary Metric Cards */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    border-left: 4px solid var(--mku-navy);
+}
+
+.metric-card h4 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.metric-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--mku-navy);
+}

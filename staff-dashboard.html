@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - MKU Lost & Found Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- 1. SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img src="assets/logo.png" alt="MKU Logo" class="sidebar-logo">
+                <h3>MKU Portal</h3>
+                <span class="role-tag" style="background-color: #137333; color: white;">Staff View</span>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" onclick="switchStaffTab('overview')">📊 Overview</a></li>
+                <li><a href="#" onclick="switchStaffTab('report-lost')">⚠️ Report Lost Property</a></li>
+                <li><a href="#" onclick="switchStaffTab('report-found')">🔍 Report Found Item</a></li>
+                <li><a href="#" onclick="switchStaffTab('my-reports')">📁 My Staff Reports</a></li>
+                <li><a href="#" onclick="switchStaffTab('staff-notices')">📢 Staff-Only Notices</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">Sign Out / Exit</a>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN DASHBOARD CONTENT AREA -->
+        <main class="dashboard-main">
+            <!-- Top Header Bar -->
+            <header class="dash-header">
+                <h2>Welcome, <span id="staff-name-display">Staff Member</span></h2>
+                <p>Faculty & Administrative Lost Property Portal — Staff ID: <strong id="staff-id-display">STF</strong></p>
+            </header>
+
+            <!-- TAB 1: OVERVIEW & METRIC CARDS -->
+            <section id="tab-overview" class="dashboard-tab">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h4>My Lost Reports</h4>
+                        <p class="metric-number" id="staff-count-lost">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Items Found & Logged</h4>
+                        <p class="metric-number" id="staff-count-found">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Departmental Alerts</h4>
+                        <p class="metric-number">2</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Recovered Assets</h4>
+                        <p class="metric-number" id="staff-count-recovered">0</p>
+                    </div>
+                </div>
+
+                <!-- Staff-Only Bulletin (Hidden from Student Dashboard) -->
+                <div class="card-section" style="margin-top: 2rem; border-top: 4px solid #137333;">
+                    <h3 style="color: var(--mku-navy); margin-bottom: 0.75rem;">📢 Internal Staff & Faculty Security Bulletin</h3>
+                    <div style="background: #f0fdf4; border-left: 4px solid #137333; padding: 1rem; border-radius: 4px; margin-bottom: 0.75rem;">
+                        <p style="font-weight: 600; color: #137333;">Examination Scripts & Departmental Keys Protocol</p>
+                        <p style="font-size: 0.9rem; color: #444; margin-top: 0.25rem;">All misplaced office keys, staff ID badges, or examination envelopes found in lecture halls must be logged under the <strong>Staff/Departmental</strong> category for immediate Chief Security Officer pickup.</p>
+                    </div>
+                    <div style="background: #f8f9fa; border-left: 4px solid var(--mku-navy); padding: 1rem; border-radius: 4px;">
+                        <p style="font-weight: 600; color: var(--mku-navy);">ICT Equipment Verification</p>
+                        <p style="font-size: 0.9rem; color: #444; margin-top: 0.25rem;">Unclaimed projectors, HDMI adapters, and faculty laptops left in Science Complex rooms are held at the Main Administration Security Desk.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dynamic Content Area for Forms & Lists -->
+            <div id="staff-content-area"></div>
+        </main>
+    </div>
+
+    <script src="staff-dashboard.js"></script>
+</body>
+
+</html>

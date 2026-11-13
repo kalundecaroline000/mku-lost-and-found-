@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Kenya University - Lost & Found Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. HEADER / NAVBAR -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="MKU Logo" class="logo">
+            <div class="brand-text">
+                <h1>Mount Kenya University</h1>
+                <p>Lost & Found & Citation Verification</p>
+            </div>
+        </div>
+        <nav class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#citation-lookup">ID Lookup</a></li>
+                <li><a href="#search-section">Browse Items</a></li>
+                <li><a href="#report-section">Report</a></li>
+            </ul>
+            <!-- Dynamic User Account / Session Display -->
+            <div id="user-session-container">
+                <button onclick="openAuthModal()" class="btn-sm btn-resolve" style="padding: 0.5rem 1rem;">Sign In / Create Account</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. HERO BANNER -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Unlocking Infinite Possibilities</h2>
+            <p>Official Student ID, Exam Citation & Lost Property Verification Portal</p>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT CONTAINER -->
+    <main class="container">
+
+        <!-- BLOCK A: Quick Student ID & Exam Citation Lookup -->
+        <section id="citation-lookup" class="card-section">
+            <div class="card-header">
+                <h2>Quick Student ID & Citation Verification</h2>
+                <p>Check if a missing student ID card or examination citation has been retrieved by MKU Security.</p>
+            </div>
+
+            <form id="lookup-form" class="inline-form">
+                <div class="form-group">
+                    <label for="reg-number">Registration Number:</label>
+                    <input type="text" id="reg-number" placeholder="e.g. BIT/2023/12345" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Check Security Records</button>
+            </form>
+
+            <!-- Results area where JS will render output -->
+            <div id="lookup-result" class="result-box hidden"></div>
+        </section>
+
+        <!-- BLOCK B: Search & Filters -->
+        <section id="search-section" class="card-section">
+            <h2>Search Lost & Found Property</h2>
+            <div class="filters-grid">
+                <!-- Keyword Input -->
+                <div class="form-group">
+                    <label for="search-input">Search Keyword</label>
+                    <input type="text" id="search-input" placeholder="e.g., HP Laptop, Scientific Calculator, National ID...">
+                </div>
+
+                <!-- Campus Location Filter -->
+                <div class="form-group">
+                    <label for="campus-filter">Campus Location</label>
+                    <select id="campus-filter">
+                        <option value="all">All Campuses</option>
+                        <option value="Thika Main Campus">Thika Main Campus</option>
+                        <option value="Nairobi Campus">Nairobi Campus</option>
+                        <option value="Parklands Law Campus">Parklands Law Campus</option>
+                        <option value="Nakuru Campus">Nakuru Campus</option>
+                        <option value="Eldoret Campus">Eldoret Campus</option>
+                    </select>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="form-group">
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="Student ID / Citation">Student ID / Citation</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Documents">Documents & Keys</option>
+                        <option value="Personal Items">Personal Items / Bags</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOCK C: Items Results Grid -->
+        <section class="items-section">
+            <h3>Retrieved Items Log</h3>
+            <div id="items-grid" class="items-grid">
+                <!-- Dynamic cards loaded via app.js will go here -->
+            </div>
+        </section>
+
+        <!-- BLOCK D: Account-Gated Reporting Prompt -->
+        <section id="report-section" class="card-section" style="text-align: center; padding: 3rem 2rem;">
+            <div class="card-header">
+                <h2>Lost or Found Something on Campus?</h2>
+                <p>To prevent false reports and ensure secure item verification, you must sign in or create an MKU portal account before filing a report or claiming property.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                <button onclick="openAuthModal()" class="btn btn-primary">Create Account / Sign In to Report</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. AUTHENTICATION / ACCOUNT CREATION MODAL -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            <h3 style="color: var(--mku-navy); margin-bottom: 0.5rem;">MKU Portal Sign In / Register</h3>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem;">Select your role to access your dedicated campus dashboard.</p>
+
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="auth-name">Full Name:</label>
+                    <input type="text" id="auth-name" placeholder="e.g. Caroline Kalunde" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="auth-id">Registration No. / Staff ID:</label>
+                    <input type="text" id="auth-id" placeholder="e.g. BIT/2024/52267" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="auth-role">Select Dashboard Role:</label>
+                    <select id="auth-role" required>
+                        <option value="STUDENT">👤 Student Dashboard</option>
+                        <option value="STAFF">🏫 University Staff Dashboard</option>
+                        <option value="OFFICER">🔍 Lost & Found Officer Dashboard</option>
+                        <option value="ADMIN">🛡️ System Administrator Dashboard</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Sign In & Open Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Enter My Dashboard</button>
+    </form>
+    </div>
+    </div>
+
+    <!-- 5. FOOTER -->
+    <footer>
+        <p>&copy; Mount Kenya University Security Department. All Rights Reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
